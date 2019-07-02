@@ -2,13 +2,14 @@
 JavaScript SDK that will that will generate, extend, and/or expire a user session object and store it in the browsers cookie, in order to track browser side session for a user
 
 The Session object should be in the format list below:
+```
 session {
  "id": "awd34!@a754",
  "expiration": "2019-01-17 23:42:23:134",
  "referrer": "https://abc.com/whatever",
  "campaign": “summer_mailer”
 }
-
+```
 
 There will be a function called getSession()​ in the SDK that can be used to get the
 session object on the current visitor:
