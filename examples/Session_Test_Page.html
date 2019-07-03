@@ -5,7 +5,7 @@
   <title>Insticator Session - Test Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <!-- loading the Insticator SDK -->
-  <script src="https://cdn.jsdelivr.net/gh/hassainsaeed/InsticatorSession/src/InsticatorSessionSDK.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/hassainsaeed/InsticatorSession@6f20e0ce6509b6828eb4133b5af8513ed1880031/src/InsticatorSessionSDK.js"></script>
   <script>
     window.sessionObject = getSession()
   </script>
@@ -27,25 +27,34 @@
         <div class="row">
           <div class="col-12">
             <h2>Session Object for the Current Visiting User</h2>
-            <h4>Click the button below to generate or extend a session</h4>
-            <button id="getSessionButton">getSession()</button>
-            <script>
-              document.getElementById("getSessionButton").onclick = function() {
-              window.sessionObject = getSession()
-              document.getElementById("sessionObjectBox").innerHTML = "<pre style='min-height: 140px;vertical-align: top;'><code><br><br>" + JSON.stringify(window.sessionObject) + "</code></pre>"
-            }
-            </script>
             <div id='sessionObjectBox'>
               <pre style="min-height: 140px;vertical-align: top">
               <code>
                 <script>
-                  document.write(JSON.stringify(window.sessionObject))
+                  document.write("{\n" +  "\t'id': " + window.sessionObject.id +
+                        "\n" + "\t'expiration': " + window.sessionObject.expiration +
+                        "\n" + "\t'referrer': " + window.sessionObject.referrer +
+                        "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}")
                 </script>
               </pre>
-            </code>
-              <script>
-              </script>
+              </code>
             </div>
+
+            <br>
+            <br>
+            <h4>Click the button below to generate or extend a session</h4>
+            <button id="getSessionButton">getSession()</button>
+            <script>
+              document.getElementById("getSessionButton").onclick = function() {
+                window.sessionObject = getSession()
+                document.getElementById("sessionObjectBox").innerHTML =
+                  "<pre style='min-height: 140px;vertical-align: top;'><code><br><br>" +
+                  "{\n" + "\t'id': " + window.sessionObject.id +
+                  "\n" + "\t'expiration': " + window.sessionObject.expiration +
+                  "\n" + "\t'referrer': " + window.sessionObject.referrer +
+                  "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}" + "</code></pre>"
+              }
+            </script>
           </div>
         </div>
 
