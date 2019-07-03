@@ -38,8 +38,7 @@
 
    // Verified that this session has met all the criteria to live, so extend the expiration of the session
    // Update the session object in the cookie to have the new expiration time, and return the updated session object
-   const newExpirationTime = getExpirationTime()
-   sessionObject.expirationTime = newExpirationTime
+   sessionObject.expiration = generateNewExpirationTime()
    updateSessionObjectInCookie(sessionObject);
 
    return sessionObject
@@ -78,7 +77,7 @@
  function createNewSessionCookie() {
    let sessionObject = {}
    sessionObject.id = generateSessionID()
-   sessionObject.expiration = getExpirationTime();
+   sessionObject.expiration = generateNewExpirationTime();
    // TODO: Ask if referrer is the document.referrer
    sessionObject.referrer = document.referrer
    sessionObject.campaign = getCampaign()
@@ -126,7 +125,7 @@
  * Session will expire either at 30 minutes since last action, or at end of day
  * Output: Expiration time (time the session will expire). In JavaScript Date format
 */
- function getExpirationTime() {
+ function generateNewExpirationTime() {
    const currentTime = new Date();
    let expirationTime  = new Date();
 
@@ -171,3 +170,9 @@
  function updateSessionObjectInCookie(sessionObject) {
    document.cookie = "session=" + JSON.stringify(sessionObject)
  }
+
+ // TODO: Set up test webpage for SDK to demonstrate
+ // TODO: Get Node and http-server set up so you can actually test the test webpage
+ // TODO: Get ESLint set up to lint the project
+ // TODO: Complete the README
+ // TODO: Get Unit tests set-up
