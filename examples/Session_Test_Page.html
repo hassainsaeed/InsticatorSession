@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <!-- loading the Insticator SDK -->
   <script src="http://localhost:8000/src/InsticatorSessionSDK.js"></script>
+
   <script>
     window.sessionObject = getSession()
   </script>
@@ -28,16 +29,16 @@
           <div class="col-12">
             <h2>Session Object for the Current Visiting User</h2>
             <div id='sessionObjectBox'>
-              <pre style="min-height: 140px;vertical-align: top">
+              <pre>
               <code>
                 <script>
-                  document.write("{\n" +  "\t'id': " + window.sessionObject.id +
+                  document.write("session = {\n" +  "\t'id': " + window.sessionObject.id +
                         "\n" + "\t'expiration': " + window.sessionObject.expiration +
                         "\n" + "\t'referrer': " + window.sessionObject.referrer +
                         "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}")
                 </script>
-              </pre>
               </code>
+            </pre>
             </div>
 
             <br>
@@ -48,11 +49,27 @@
               document.getElementById("getSessionButton").onclick = function() {
                 window.sessionObject = getSession()
                 document.getElementById("sessionObjectBox").innerHTML =
-                  "<pre style='min-height: 140px;vertical-align: top;'><code><br><br>" +
-                  "{\n" + "\t'id': " + window.sessionObject.id +
+                  "<pre><code>" +
+                  "session = {\n" + "\t'id': " + window.sessionObject.id +
                   "\n" + "\t'expiration': " + window.sessionObject.expiration +
                   "\n" + "\t'referrer': " + window.sessionObject.referrer +
                   "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}" + "</code></pre>"
+              }
+            </script>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <h4>Click the button below to randomly generate a new campaign</h4>
+            <button id="generateRandomCampaign">Generate a Random Campaign</button>
+            <script>
+              document.getElementById("generateRandomCampaign").onclick = function() {
+                arrayOfRandomCampaigns = ["horses_in_the_back", "horse_tack_is_attached", "hat_is_matte_black", "boots_thats_black_to_match", "riding_on_a_horse", "you_can_whip_your_porsche", "old_town_road"]
+                randomCampaign = arrayOfRandomCampaigns[(Math.floor(Math.random() * arrayOfRandomCampaigns.length))];
+                window.location.href = "?campaign=" + randomCampaign
               }
             </script>
           </div>
