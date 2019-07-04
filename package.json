@@ -1,0 +1,14 @@
+{
+  "name": "insticator-session",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A Javascript SDK that generates, maintains, and expires a user's session while visiting a webpage",
+  "repository": "https://github.com/hassainsaeed/InsticatorSession",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1"
+  }
+}
