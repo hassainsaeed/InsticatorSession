@@ -1,5 +1,5 @@
 /**
- * InsticatorSessionSDK.js - A JavaScript SDK by Hassain Saeed.
+ * InsticatorSession.js - A JavaScript SDK by Hassain Saeed.
  */
 
 
