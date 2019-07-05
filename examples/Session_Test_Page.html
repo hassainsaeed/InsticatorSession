@@ -5,7 +5,8 @@
   <title>Insticator Session - Test Page</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <!-- loading the Insticator SDK -->
-  <script src="https://cdn.jsdelivr.net/gh/hassainsaeed/InsticatorSession/src/InsticatorSessionSDK.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/hassainsaeed/InsticatorSession@latest/src/InsticatorSession.js"></script>
+
   <script>
     window.sessionObject = getSession()
   </script>
@@ -27,25 +28,59 @@
         <div class="row">
           <div class="col-12">
             <h2>Session Object for the Current Visiting User</h2>
+            <div id='sessionObjectBox'>
+              <pre>
+              <code>
+                <script>
+                  document.write("session = {\n" +  "\t'id': " + window.sessionObject.id +
+                        "\n" + "\t'expiration': " + window.sessionObject.expiration +
+                        "\n" + "\t'referrer': " + window.sessionObject.referrer +
+                        "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}")
+                </script>
+              </code>
+            </pre>
+            </div>
+
+            <br>
+            <br>
             <h4>Click the button below to generate or extend a session</h4>
             <button id="getSessionButton">getSession()</button>
             <script>
               document.getElementById("getSessionButton").onclick = function() {
-              window.sessionObject = getSession()
-              document.getElementById("sessionObjectBox").innerHTML = "<pre style='min-height: 140px;vertical-align: top;'><code><br><br>" + JSON.stringify(window.sessionObject) + "</code></pre>"
-            }
+                window.sessionObject = getSession()
+                document.getElementById("sessionObjectBox").innerHTML =
+                  "<pre><code>" +
+                  "session = {\n" + "\t'id': " + window.sessionObject.id +
+                  "\n" + "\t'expiration': " + window.sessionObject.expiration +
+                  "\n" + "\t'referrer': " + window.sessionObject.referrer +
+                  "\n" + "\t'campaign': " + window.sessionObject.campaign + "\n" + "}" + "</code></pre>"
+              }
             </script>
-            <div id='sessionObjectBox'>
-              <pre style="min-height: 140px;vertical-align: top">
-              <code>
-                <script>
-                  document.write(JSON.stringify(window.sessionObject))
-                </script>
-              </pre>
-            </code>
-              <script>
-              </script>
-            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <h4>Click the button below to randomly generate a new campaign (which will make a new session)</h4>
+            <button id="generateRandomCampaign">Generate a Random Campaign</button>
+            <script>
+              document.getElementById("generateRandomCampaign").onclick = function() {
+                arrayOfRandomCampaigns = ["horses_in_the_back", "horse_tack_is_attached", "hat_is_matte_black", "boots_thats_black_to_match", "riding_on_a_horse", "you_can_whip_your_porsche", "in_the_vally", "off_the_porch","old_town_road"]
+                randomCampaign = arrayOfRandomCampaigns[(Math.floor(Math.random() * arrayOfRandomCampaigns.length))];
+                window.location.href = "?campaign=" + randomCampaign
+              }
+            </script>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <br>
+            <br>
+            <br>
+            <h4>To verify that a new session is created when expiration time is reached (i.e. 30 minutes of activity or end of day), please manually change the Time and Date settings on your computer's OS</h4>
           </div>
         </div>
 
