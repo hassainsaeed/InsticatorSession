@@ -36,7 +36,8 @@ Then the `getSession()` function will be available to you in order to generate a
 ```
 <script>
 		document.getElementById("getSessionButton").onclick = function() {
-		window.sessionObject = getSession()
+		    window.sessionObject = getSession()
+    }
 </script>
 ```
 ### Example Test Webpage
@@ -60,14 +61,14 @@ These concerns can be mitigated by encrypting the keys and values inside of the 
 
 - The session object is a transient cookie (aka a session cookie), meaning that it is not persistent and it will disappear when the user closes the browser  
 - This SDK will not serve for users on for browsers of IE 10 and below, because they do not take the ES5 naming convention of defining variables with `const` and `let`. This SDK will throw a syntax error on these browsers and stop working.
-- The time used to determine when the session object will expire is based on Javascript's` Date()` Object, which reads the date and time from the user's browser (and the browser usually gets the date and time from the user's OS). The date and time is not read from an external source over the Internet, so users can update their date and time in their computer's OS to manipulate and force the expiration of the session object.
+- The time used to determine when the session object will expire is based on Javascript's `Date()` Object, which reads the date and time from the user's browser (and the browser usually gets the date and time from the user's OS). The date and time is not read from an external verifiable source over the Internet, so users can update their date and time in their computer's OS to manipulate and force the expiration of the session object.
 
 ## How to Test this SDK
 
 The functional testing of this SDK can be completed through the example test webpage located in this repository (read above in this README document for information on how to set-up and run the example test webpage using npm). Here are some of functional test cases you can perform on the example test webpage in order to test the functionality and features of the SDK:
-1) With no session object previously stored in your browser's cookies, verify that calling `getSession()` from the SDK generates a brand new session object and stores it into the browser's cookies
+1) With no session object previously stored in your browser's cookies (i.e. first time visitor), verify that going to the webpage for the first time  `getSession()` is called and the SDK generates a brand new session object and stores it into the browser's cookies
 2) After just a few minutes of inactivity and before 11:30pm, verify that calling `getSession()` from the SDK will update the existing session object by extending the expiration time to 30 minutes after the current time.
-3) After just a few minutes of inactivity and after 11:30pm, verify that calling `getSession()` from the SDK will update the existing session object by extending the expiration time to 11:59:59.999 PM (i.e. end of day).
+3) After just a few minutes of inactivity and after 11:30pm but before midnight, verify that calling `getSession()` from the SDK will update the existing session object by extending the expiration time to 11:59:59.999 PM (i.e. end of day).
 4) After 30 minutes of inactivity, verify that calling `getSession()` from the SDK will generate a brand new session object with a new session ID, and replace the old session object in the browser's cookies with it.
 5) After a few minutes of inactivity and after midnight (i.e. the start of the new day),  verify that calling `getSession()` from the SDK will generate a brand new session object with a new session ID, and replace the old session object in the browser's cookies with it.
 6) Reloading the webpage with a new campaign query string parameter, verify that calling `getSession()` from the SDK will generate a brand new session object with a new session ID, and replace the old session object in the browser's cookies with it.
