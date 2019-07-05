@@ -63,11 +63,11 @@
             <br>
             <br>
             <br>
-            <h4>Click the button below to randomly generate a new campaign</h4>
+            <h4>Click the button below to randomly generate a new campaign (which will make a new session)</h4>
             <button id="generateRandomCampaign">Generate a Random Campaign</button>
             <script>
               document.getElementById("generateRandomCampaign").onclick = function() {
-                arrayOfRandomCampaigns = ["horses_in_the_back", "horse_tack_is_attached", "hat_is_matte_black", "boots_thats_black_to_match", "riding_on_a_horse", "you_can_whip_your_porsche", "old_town_road"]
+                arrayOfRandomCampaigns = ["horses_in_the_back", "horse_tack_is_attached", "hat_is_matte_black", "boots_thats_black_to_match", "riding_on_a_horse", "you_can_whip_your_porsche", "in_the_vally", "off_the_porch","old_town_road"]
                 randomCampaign = arrayOfRandomCampaigns[(Math.floor(Math.random() * arrayOfRandomCampaigns.length))];
                 window.location.href = "?campaign=" + randomCampaign
               }

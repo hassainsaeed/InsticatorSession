@@ -171,8 +171,6 @@
    document.cookie = "session=" + JSON.stringify(sessionObject)
  }
 
- // TODO: Set up test webpage for SDK to demonstrate
- // TODO: Get Node and http-server set up so you can actually test the test webpage
  // TODO: Get ESLint set up to lint the project
  // TODO: Complete the README
  // TODO: Get Unit tests set-up
