@@ -169,6 +169,5 @@ function updateSessionObjectInCookie(sessionObject) {
   document.cookie = `session=${JSON.stringify(sessionObject)}`;
 }
 
-// TODO: Get ESLint set up to lint the project
 // TODO: Complete the README
 // TODO: Get Unit tests set-up
